@@ -1,0 +1,8 @@
+{
+  "appId": "com.loopback.game",
+  "appName": "Loopback",
+  "webDir": "www",
+  "backgroundColor": "#0b0d17",
+  "ios": { "contentInset": "never" },
+  "android": { "backgroundColor": "#0b0d17" }
+}

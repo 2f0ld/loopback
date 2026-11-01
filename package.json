@@ -1,0 +1,23 @@
+{
+  "name": "loopback",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Loopback: a one-thumb mobile arcade game where your past self comes back every loop.",
+  "scripts": {
+    "serve": "npx --yes http-server www -p 8080 -c-1",
+    "add:android": "cap add android",
+    "add:ios": "cap add ios",
+    "sync": "cap sync",
+    "android": "cap sync android && cap open android",
+    "ios": "cap sync ios && cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
+    "@capacitor/haptics": "^7.0.0",
+    "@capacitor/ios": "^7.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.0.0"
+  }
+}

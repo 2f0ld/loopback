@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d17">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Loopback">
+  <meta name="description" content="Every loop, your past self comes back. It works for you, and it can kill you.">
+  <title>Loopback</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="menu" class="screen">
+    <h1>LOOP<span>BACK</span></h1>
+    <p class="tag">Every loop, your past self comes back.<br><b>It works for you, and it can kill you.</b></p>
+    <button id="play" class="primary">Play</button>
+    <button id="daily">Daily Loop <small id="dailyBest"></small></button>
+    <button id="lab">The Lab <small id="menuShards"></small></button>
+    <p class="best" id="menuBest"></p>
+    <ul class="how">
+      <li><b>Drag anywhere</b> to move</li>
+      <li>Collect <span class="gem">◆</span> to meet each loop's <b>quota</b></li>
+      <li>Every loop becomes an <b>echo</b> that replays you.<br>Echoes collect gems for you, but touching one is fatal</li>
+      <li>Faint <span class="gem">◇</span> show <b>next</b> loop's gems. Plan your route</li>
+    </ul>
+  </div>
+
+  <div id="draft" class="screen hidden">
+    <p class="kicker accent" id="draftTitle">LOOP CLEARED</p>
+    <h2>Choose an upgrade</h2>
+    <div id="cards" class="cards"></div>
+    <button id="reroll" class="small">🎲 Reroll</button>
+  </div>
+
+  <div id="labScreen" class="screen scroll hidden">
+    <div class="labhead">
+      <h2>The Lab</h2>
+      <span class="shards">◆ <b id="labShards">0</b></span>
+    </div>
+    <p class="labsub">Gems you collect become shards. Spend them on permanent unlocks.</p>
+    <div id="labList" class="lablist"></div>
+    <button id="labBack" class="primary">Back</button>
+  </div>
+
+  <div id="over" class="screen hidden">
+    <p class="kicker" id="overTitle">GAME OVER</p>
+    <div class="big" id="score">0</div>
+    <p class="sub">gems · reached loop <span id="overLoop">1</span></p>
+    <p class="split" id="split"></p>
+    <p class="cause" id="cause"></p>
+    <p class="newbest" id="newBest"></p>
+    <p class="earn" id="earn"></p>
+    <p class="hint" id="unlockHint"></p>
+    <button id="retry" class="primary">Again</button>
+    <div class="row">
+      <button id="overLab">Lab</button>
+      <button id="share">Share</button>
+      <button id="home">Menu</button>
+    </div>
+  </div>
+
+  <button id="mute" class="icon" aria-label="Toggle sound">🔊</button>
+  <div id="toast" class="hidden"></div>
+
+  <script src="game.js"></script>
+</body>
+</html>
