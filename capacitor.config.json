@@ -1,8 +1,26 @@
 {
-  "appId": "com.loopback.game",
+  "appId": "com.dariopatt.loopback",
   "appName": "Loopback",
   "webDir": "www",
   "backgroundColor": "#0b0d17",
-  "ios": { "contentInset": "never" },
-  "android": { "backgroundColor": "#0b0d17" }
+  "ios": {
+    "contentInset": "never",
+    "backgroundColor": "#0b0d17"
+  },
+  "android": {
+    "backgroundColor": "#0b0d17"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 600,
+      "launchAutoHide": true,
+      "backgroundColor": "#0b0d17",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "overlaysWebView": true,
+      "style": "DARK",
+      "backgroundColor": "#0b0d17"
+    }
+  }
 }

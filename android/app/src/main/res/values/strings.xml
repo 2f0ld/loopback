@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Loopback</string>
+    <string name="title_activity_main">Loopback</string>
+    <string name="package_name">com.dariopatt.loopback</string>
+    <string name="custom_url_scheme">com.dariopatt.loopback</string>
+</resources>

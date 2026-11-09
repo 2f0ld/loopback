@@ -52,8 +52,26 @@ The game-over screen always shows how close you are to the next unlock ("12 more
 plus how much your echoes harvested. That teaches the core idea without a tutorial wall.
 
 ## Onboarding
-The first runs show contextual one-line tips at loops 1–3 (quota, echoes harvest, plant routes).
-Loop 1 has a quota of 1, so you can't really fail it.
+An interactive tutorial runs inside the first real run, introducing one idea at a time:
+1. Before loop 1: move + quota (loop 1 has a quota of 1, so you can't really fail it).
+2. After loop 1: "Meet your echo". Loop 2 places two gems right on the echo's early path so the player
+   *watches* it harvest them.
+3. After loop 2: the next-loop preview ◇ appears only now, with the "plan ahead" card.
+4. At the first draft: upgrades + the Lab.
+Each card shows once (replayable from Settings). Game-over screens add a rotating strategy tip.
+
+## Goals
+15 goals pay bonus shards and nudge players toward strategies (e.g. *Let Them Work*: meet a quota of 3+
+without grabbing a gem yourself; *Hive Mind*: echoes collect 10 gems in one loop).
+
+## Adaptive music
+A soft pulse plays in the loop's rhythm (12 beats per 6 s loop), and every echo adds its own note on
+its own beat, so the soundtrack grows as your past piles up and resets each run.
+
+## Quality of life
+Pause menu (restart / settings / end run, gems are still banked), settings (sound, music, vibration,
+reduce motion, drag sensitivity, replay tutorial, privacy policy, reset progress), lifetime stats,
+build summary on game over, Android back button support.
 
 ## Daily Loop
 Same gem layout for everyone each day (seeded) + share text. Gives a reason to return each day.

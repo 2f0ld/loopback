@@ -2,22 +2,29 @@
   "name": "loopback",
   "version": "1.0.0",
   "private": true,
-  "description": "Loopback: a one-thumb mobile arcade game where your past self comes back every loop.",
+  "description": "Loopback: a one-thumb mobile strategy game where your past self comes back every loop.",
   "scripts": {
-    "serve": "npx --yes http-server www -p 8080 -c-1",
-    "add:android": "cap add android",
-    "add:ios": "cap add ios",
+    "postinstall": "node -e \"require('fs').mkdirSync('www/vendor',{recursive:true});require('fs').copyFileSync('node_modules/@capacitor/core/dist/capacitor.js','www/vendor/capacitor.js')\"",
+    "serve": "npx --yes http-server www -p 8765 -c-1",
+    "assets": "python tools/make_icons.py && capacitor-assets generate --iconBackgroundColor \"#0b0d17\" --iconBackgroundColorDark \"#0b0d17\" --splashBackgroundColor \"#0b0d17\" --splashBackgroundColorDark \"#0b0d17\"",
     "sync": "cap sync",
     "android": "cap sync android && cap open android",
-    "ios": "cap sync ios && cap open ios"
+    "ios": "cap sync ios && cap open ios",
+    "screenshots": "node tools/screenshots.mjs"
   },
   "dependencies": {
-    "@capacitor/android": "^7.0.0",
-    "@capacitor/core": "^7.0.0",
-    "@capacitor/haptics": "^7.0.0",
-    "@capacitor/ios": "^7.0.0"
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/core": "^8.6.0",
+    "@capacitor/haptics": "^8.0.0",
+    "@capacitor/ios": "^8.6.0",
+    "@capacitor/preferences": "^8.0.0",
+    "@capacitor/share": "^8.0.0",
+    "@capacitor/splash-screen": "^8.0.0",
+    "@capacitor/status-bar": "^8.0.0"
   },
   "devDependencies": {
-    "@capacitor/cli": "^7.0.0"
+    "@capacitor/assets": "^4.0.0",
+    "@capacitor/cli": "^8.6.0"
   }
 }

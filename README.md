@@ -13,40 +13,34 @@ loop length, player speed, gem count and quota curves (`gemCount`, `quotaNow`), 
 
 ## Project layout
 ```
-www/                  the whole game (plain HTML/CSS/JS, no build step)
+www/                    the whole game (plain HTML/CSS/JS, no build step)
   index.html, style.css, game.js
+  privacy.html          privacy policy (in-app + hosted for the stores)
+  debug.js              dev bot + store-screenshot scenes (only loads with ?debug / ?shot=)
+  vendor/capacitor.js   Capacitor runtime, copied from node_modules on npm install
   manifest.webmanifest, sw.js   PWA (installable + offline)
-  icon.svg, icon-*.png
-tools/make_icons.py   regenerates the PNG icons (needs Pillow)
-capacitor.config.json native iOS/Android wrapper config
+android/, ios/          native projects (Capacitor 8)
+assets/                 icon + splash sources for native builds
+store/                  store listing texts + generated screenshots
+tools/make_icons.py     regenerates icons/splash sources (needs Pillow)
+tools/screenshots.mjs   renders store screenshots with headless Edge/Chrome
 ```
 
 ## Play locally
 ```bash
 python -m http.server 8765 --directory www
 ```
-Open http://localhost:8765. To test on your phone, use your PC's LAN IP on the same Wi-Fi.
+Open http://localhost:8765. Add `?debug` to expose the test bot (`__bot`, `__loopback`) in the console.
 
-## Ship it
+## Common commands
+| Command | What it does |
+|---|---|
+| `npm install` | install Capacitor + plugins, copy the Capacitor runtime into `www/vendor/` |
+| `npx cap sync` | copy `www/` into the native projects (run after every web change) |
+| `npm run android` / `npm run ios` | sync and open Android Studio / Xcode |
+| `npm run assets` | regenerate all native icons and splash screens |
+| `npm run screenshots` | regenerate store screenshots into `store/screenshots/` |
 
-### 1. Web / PWA (fastest, iOS + Android)
-Upload `www/` to any static host (Netlify, Vercel, GitHub Pages, Cloudflare Pages). On the phone:
-Safari → Share → *Add to Home Screen*, or Chrome → *Install app*. Runs fullscreen and offline.
-
-### 2. Native apps (App Store / Google Play) via Capacitor
-```bash
-npm install
-npx cap add android
-npx cap add ios
-npm run android
-npm run ios
-```
-- `npm run android` opens Android Studio (needs Android Studio + JDK 17+).
-- `npm run ios` opens Xcode (needs a Mac with Xcode + CocoaPods).
-- Lock orientation to portrait: Xcode → target → *Deployment Info*, and in
-  `android/app/src/main/AndroidManifest.xml` add `android:screenOrientation="portrait"` to the activity.
-- App icons: use `www/icon-1024.png` with `npx @capacitor/assets generate`.
-- Native haptics are wired via `@capacitor/haptics` automatically.
-
-After changing anything in `www/`, run `npx cap sync` before rebuilding the native apps. Bump `CACHE` in
-`www/sw.js` when deploying a new web version so installed PWAs update.
+## Publishing
+See [PUBLISHING.md](PUBLISHING.md) for the full step-by-step guide to Google Play and the App Store,
+and [store/STORE_LISTING.md](store/STORE_LISTING.md) for copy-paste store texts.
